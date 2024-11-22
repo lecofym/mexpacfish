@@ -16,7 +16,7 @@ rm(list = ls())
 shell('cls')
 
 # Load database of species presence ####
-origin <- read.csv('Presence.csv',header = T, stringsAsFactors = T, fileEncoding = 'latin1')
+origin <- read.csv('Data/Presence.csv',header = T, stringsAsFactors = T, fileEncoding = 'latin1')
 
 # Visualize content
 str(origin)
@@ -28,7 +28,7 @@ rownames(presence)<- origin[, 3]
 
 
 # Load database of biological traits ####
-traits<- read.csv('Fish Traits.csv',header = T, stringsAsFactors = T,row.names = 1)
+traits<- read.csv('Data/Fish Traits.csv',header = T, stringsAsFactors = T,row.names = 1)
 str(traits)
 sub.traits<- traits # Not for now
 
@@ -48,7 +48,7 @@ traits$Position<- factor(traits$Position,
 as_tibble(traits)
 
 # Load database with traits information ####
-types<- read.csv('Traits info.csv',
+types<- read.csv('Data/Traits info.csv',
                  header = T, stringsAsFactors = T)
 sp.tr.summary(tr_cat = types,
               sp_tr = traits)
@@ -759,7 +759,7 @@ Act
 
 grid.arrange(Pos, Act, nrow = 2) # 1280x1024
 grid.arrange(Mob, Greg,Size, Diet,Pos,Act, nrow=3) #2500x3072
-ggsave("Figure 2.svg", grid.arrange(Mob, Greg,Size, Diet,Pos,Act, nrow=3), width = 3500, height= 2500, units='px', dpi=300, bg="white")
+ggsave("Figs/Figure 2.svg", grid.arrange(Mob, Greg,Size, Diet,Pos,Act, nrow=3), width = 3500, height= 2500, units='px', dpi=300, bg="white")
 
 # We remove all objects that are no longer useful ####
 rm(Pos, Mob, Act, Greg, Size, Diet, traits.province)
@@ -1028,5 +1028,5 @@ grid.arrange(hist.caliperu, hist.cortez, hist.oceanic,
              PC12_Oce, PC12_Pan, PC12_backbone, PC34_CalPeru,
              PC34_Cor, PC34_Oce, PC34_Pan, PC34_backbone,
              nrow = 3) # 2560x1440
-ggsave("Figure 3.svg", width = 2560, height= 1440, units='px', dpi=300, bg="white")
+ggsave("Figs/Figure 3.svg", width = 2560, height= 1440, units='px', dpi=300, bg="white")
 
